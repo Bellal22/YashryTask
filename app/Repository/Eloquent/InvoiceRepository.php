@@ -67,9 +67,11 @@ class InvoiceRepository extends BaseRepository implements InvoiceRepositoryInter
     {
         $offerInstances = [];
         $this->afterDiscount = $this->subTotal;
+
         if (count($this->ordered_products->where('type','Shoes')) >= 1) $offerInstances[] = new ShoesOffer($this->ordered_products);
         if (count($this->ordered_products->where('tops',1)) >= 2) $offerInstances[] = new TopsOffer($this->ordered_products);
         if (count($this->ordered_products) >= 2 ) $offerInstances[] = new ShippingOffer($this->shipping);
+
         foreach ($offerInstances as $offerInstance)
         {
             $this->afterDiscount -= $offerInstance->calculateAfterOffer($this->ordered_products);

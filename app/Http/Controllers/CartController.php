@@ -19,7 +19,7 @@ class CartController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\CartRequest $request
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\InvoiceResource
      */
     public function store(CartRequest $request)
     {
@@ -29,6 +29,4 @@ class CartController extends Controller
             ->getOffers()
             ->getResource();
     }
-
-
 }

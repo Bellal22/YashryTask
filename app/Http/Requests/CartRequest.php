@@ -30,4 +30,13 @@ class CartRequest extends FormRequest
             ],
         ];
     }
+    public function messages()
+    {
+        return [
+            'products.required' => trans("invoice.attributes.products.required"),
+            'products.array' => trans("invoice.attributes.products.array"),
+            'products.*.in' => trans("invoice.attributes.products.not_found"),
+        ];
+    }
+
 }
